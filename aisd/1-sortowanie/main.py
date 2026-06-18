@@ -49,7 +49,13 @@ def bubble_sort(array: list[int]) -> None:
     Złożoność pamięciowa: O(1) – sortowanie w miejscu.
     """
     # TODO: Twoja implementacja
-    pass
+    n = len(array)
+    for i in range(n):
+        # Każde przejście i "wypycha" największy element na koniec,
+        # więc zakres porównań zmniejsza się o n - i - 1
+        for j in range(0, n - i - 1):
+            if array[j] > array[j + 1]:
+                swap(array, j, j + 1)
 
 
 def selection_sort(array: list[int]) -> None:
@@ -65,7 +71,13 @@ def selection_sort(array: list[int]) -> None:
     Złożoność pamięciowa: O(1) – sortowanie w miejscu.
     """
     # TODO: Twoja implementacja
-    pass
+    n = len(array)
+    for i in range(n):
+        min_idx = i
+        for j in range(i + 1, n):
+            if array[j] < array[min_idx]:
+                min_idx = j
+        swap(array, i, min_idx)
 
 
 def insertion_sort(array: list[int]) -> None:
@@ -81,7 +93,11 @@ def insertion_sort(array: list[int]) -> None:
     Złożoność pamięciowa: O(1) – sortowanie w miejscu.
     """
     # TODO: Twoja implementacja
-    pass
+    for i in range(1, len(array)):
+        j = i
+        while j > 0 and array[j - 1] > array[j]:
+         swap(array, j, j - 1)
+         j -= 1
 
 
 def _merge(array: list[int], left: int, mid: int, right: int) -> None:
