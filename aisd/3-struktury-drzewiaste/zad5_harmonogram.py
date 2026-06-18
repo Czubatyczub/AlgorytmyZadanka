@@ -54,7 +54,15 @@ def utworz_harmonogram(zadania: list[Zadanie]) -> list[Zadanie]:
     # TODO: Przekształć listę w kopiec in-place używając heapq.heapify().
     #       Wypisz informację o liczbie zadań i najbliższym deadline'ie.
     #       Zwróć harmonogram.
-    pass
+    heapq.heapify(zadania)  # tworzymy kopiec in-place
+
+    if zadania:
+        najblizszy_deadline = zadania[0][0]  # dni_do_deadline pierwszego elementu
+        print(f"Utworzono harmonogram z {len(zadania)} zadań. Najbliższy deadline za {najblizszy_deadline} dni.")
+    else:
+        print("Harmonogram jest pusty.")
+
+    return zadania
 
 
 # ============================================================
@@ -73,7 +81,17 @@ def najpilniejsze(harmonogram: list[Zadanie], n: int) -> list[Zadanie]:
     """
     # TODO: Użyj heapq.nsmallest(), aby pobrać n zadań z najbliższym deadline'em.
     #       Wypisz je w czytelny sposób i zwróć listę.
-    pass
+    if not harmonogram:
+        print("Harmonogram jest pusty.")
+        return []
+
+    top_n = heapq.nsmallest(n, harmonogram, key=lambda x: x[0])  # x[0] = dni_do_deadline
+
+    print(f"{len(top_n)} najpilniejszych zadań:")
+    for dni, nazwa, priorytet in top_n:
+        print(f"dni={dni}, zadanie='{nazwa}', priorytet='{priorytet}'")
+
+    return top_n
 
 
 # ============================================================
@@ -96,7 +114,20 @@ def usun_najpilniejsze(harmonogram: list[Zadanie], n: int) -> list[Zadanie]:
     #       używając heapq.heappop(). Zbieraj usunięte zadania na liście.
     #       Obsłuż przypadek gdy harmonogram ma mniej niż n zadań.
     #       Wypisz każde usunięte zadanie i zwróć listę usuniętych.
-    pass
+    if not harmonogram:
+        print("Harmonogram jest pusty — brak zadań do usunięcia.")
+        return []
+
+    usuniete = []
+    ile = min(n, len(harmonogram))  # jeśli harmonogram ma mniej niż n zadań
+
+    for _ in range(ile):
+        zadanie = heapq.heappop(harmonogram)
+        dni, nazwa, priorytet = zadanie
+        print(f"Usunięto zadanie: dni={dni}, zadanie='{nazwa}', priorytet='{priorytet}'")
+        usuniete.append(zadanie)
+
+    return usuniete
 
 
 # ============================================================
@@ -116,7 +147,14 @@ def dodaj_zadanie(harmonogram: list[Zadanie], dni: int, nazwa: str, priorytet_bi
     # TODO: Dodaj nowe zadanie do kopca tak, żeby nie zniszczyć jego własności.
     #       Zwykłe list.append() nie wystarczy — użyj odpowiedniej funkcji heapq.
     #       Wypisz potwierdzenie dodania.
-    pass
+    # Tworzymy krotkę zgodną z definicją typu Zadanie: (int, str, str)
+    nowe_zadanie: Zadanie = (dni, nazwa, priorytet_biz)
+
+    # Dodajemy element do kopca zachowując jego strukturę
+    heapq.heappush(harmonogram, nowe_zadanie)
+
+    # Wypisujemy potwierdzenie dodania
+    print(f"➕ Dodano nowe zadanie: dni={dni}, zadanie='{nazwa}', priorytet='{priorytet_biz}'")
 
 
 # =============================================================================

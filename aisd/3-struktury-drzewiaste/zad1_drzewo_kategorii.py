@@ -1,28 +1,3 @@
-# =============================================================================
-# Zadanie 1 – Drzewo (Tree) – hierarchiczna struktura kategorii
-# =============================================================================
-# OPIS PROBLEMU:
-#   Pracujesz jako programista w firmie prowadzącej sklep internetowy.
-#   Kategorie produktów są zorganizowane hierarchicznie – każda kategoria
-#   może mieć dowolną liczbę podkategorii, a te z kolei swoje własne
-#   podkategorie (drzewo n-arne, ang. n-ary tree).
-#
-#   Przykład struktury:
-#     Sklep
-#     ├── Elektronika
-#     │   ├── Laptopy
-#     │   └── Telefony
-#     │       ├── Android
-#     │       └── iPhone
-#     └── Dom i Ogród
-#         ├── Meble
-#         └── Narzędzia
-#
-#   Twoim zadaniem jest:
-#     1. Uzupełnienie klasy KategoriaNode o metodę dodaj_podkategorie().
-#     2. Implementacja funkcji wyswietl_drzewo() – rekurencyjne wypisywanie
-#        drzewa z wcięciami (2 spacje na każdy poziom głębokości).
-#     3. Implementacja funkcji policz_wszystkie() – zliczanie wszystkich węzłów.
 #
 # METODY / OPERACJE do poznania:
 #   - Tworzenie węzła:              KategoriaNode("nazwa")
@@ -52,6 +27,8 @@ class KategoriaNode:
 
     def __init__(self, nazwa: str) -> None:
         # TODO: Zainicjalizuj atrybuty węzła — nazwę kategorii i pustą listę dzieci.
+        self.nazwa = nazwa
+        self.dzieci = []
 
 
     def dodaj_podkategorie(self, podkategoria: "KategoriaNode") -> None:
@@ -64,10 +41,35 @@ class KategoriaNode:
             elektronika.dodaj_podkategorie(laptopy)
         """
         # TODO: Dodaj podkategorię do listy dzieci bieżącego węzła.
-        pass
+        self.dzieci.append(podkategoria)
 
     def __repr__(self) -> str:
         return f"KategoriaNode('{self.nazwa}', dzieci={len(self.dzieci)})"
+# =============================================================================
+# Zadanie 1 – Drzewo (Tree) – hierarchiczna struktura kategorii
+# =============================================================================
+# OPIS PROBLEMU:
+#   Pracujesz jako programista w firmie prowadzącej sklep internetowy.
+#   Kategorie produktów są zorganizowane hierarchicznie – każda kategoria
+#   może mieć dowolną liczbę podkategorii, a te z kolei swoje własne
+#   podkategorie (drzewo n-arne, ang. n-ary tree).
+#
+#   Przykład struktury:
+#     Sklep
+#     ├── Elektronika
+#     │   ├── Laptopy
+#     │   └── Telefony
+#     │       ├── Android
+#     │       └── iPhone
+#     └── Dom i Ogród
+#         ├── Meble
+#         └── Narzędzia
+#
+#   Twoim zadaniem jest:
+#     1. Uzupełnienie klasy KategoriaNode o metodę dodaj_podkategorie().
+#     2. Implementacja funkcji wyswietl_drzewo() – rekurencyjne wypisywanie
+#        drzewa z wcięciami (2 spacje na każdy poziom głębokości).
+#     3. Implementacja funkcji policz_wszystkie() – zliczanie wszystkich węzłów.
 
 
 # =============================================================================
@@ -91,11 +93,14 @@ def wyswietl_drzewo(node: KategoriaNode, poziom: int = 0) -> None:
 
     Args:
         node   – bieżący węzeł do wypisania
-        poziom – głębokość węzła w drzewie (korzeń = 0)
+        poziom – głębokość węzła w drzewie (korzeń = 0 )
     """
     # TODO: Wypisz nazwę bieżącego węzła z wcięciem proporcjonalnym do jego głębokości,
     #       a następnie rekurencyjnie wyświetl każde dziecko (o jeden poziom głębiej).
-    pass
+    print(" " * (poziom * 2) + node.nazwa)    #Niestety musiałem posiłkować się pomocą AI
+
+    for dziecko in node.dzieci:
+        wyswietl_drzewo(dziecko, poziom + 1)
 
 
 # =============================================================================
@@ -114,7 +119,12 @@ def policz_wszystkie(node: KategoriaNode) -> int:
     """
     # TODO: Policz bieżący węzeł i rekurencyjnie dodaj liczbę węzłów
     #       ze wszystkich poddrzew dzieci. Zwróć sumę.
-    pass
+    liczba = 1
+
+    for kategoria in node.dzieci:
+        liczba += policz_wszystkie(kategoria)
+
+    return liczba
 
 
 # =============================================================================

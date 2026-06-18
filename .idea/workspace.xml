@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df31ef06-958c-43e4-a670-08e767d0581c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Algorytmy2StrukturyLiniowe.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad1_tablica.py" beforeDir="false" afterPath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad1_tablica.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad2_lista.py" beforeDir="false" afterPath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad2_lista.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad3_lista_dwukierunkowa.py" beforeDir="false" afterPath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad3_lista_dwukierunkowa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad4_kolejka.py" beforeDir="false" afterPath="$PROJECT_DIR$/aisd/2-struktury-liniowe/zad4_kolejka.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aisd/3-struktury-drzewiaste/zad1_drzewo_kategorii.py" beforeDir="false" afterPath="$PROJECT_DIR$/aisd/3-struktury-drzewiaste/zad1_drzewo_kategorii.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,28 +13,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/aisd" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="3Ej2ntBy2ia4G06iPTFgINjJAO7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.zad2_lista.executor": "Run",
-    "Python.zad4_kolejka.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.zad1_drzewo_kategorii.executor&quot;: &quot;Run&quot;,
+    &quot;Python.zad2_lista.executor&quot;: &quot;Run&quot;,
+    &quot;Python.zad4_kolejka.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

@@ -118,7 +118,17 @@ def scalaj_logi(*strumienie: list[LogEntry]) -> list[LogEntry]:
     #       używając heapq.merge(). Pamiętaj, że wynik to generator —
     #       musisz go zmaterializować do listy.
     #       Wypisz ile strumieni i łącznie ile wpisów scalono. Zwróć listę.
-    pass
+    # Wywołanie heapq.merge z rozpakowanymi strumieniami wejściowymi
+    zmarginalizowany_generator = heapq.merge(*strumienie)
+
+    # Przekształcenie generatora
+    scalona_lista = list(zmarginalizowany_generator)
+
+    # Statystyki operacji scalania
+    print(f"Pomyślnie scalono {len(strumienie)} strumieni serwerowych.")
+    print(f"Łączna liczba wpisów w wynikowej osi czasu: {len(scalona_lista)}.")
+
+    return scalona_lista
 
 
 # ============================================================
@@ -137,7 +147,21 @@ def filtruj_bledy(logi: list[LogEntry], poziom: str) -> list[LogEntry]:
     """
     # TODO: Zwróć tylko wpisy pasujące do podanego poziomu.
     #       Wypisz ile wpisów znaleziono i zwróć listę.
-    pass
+
+    przefiltrowane = []
+
+    # Przeglądamy każdy log po kolei z naszej listy
+    for log in logi:
+        # Jeśli poziom tego logu jest taki, jakiego szukamy (np. "ERROR")
+        if log.poziom == poziom:
+            # Dorzucamy go do naszej szuflady
+            przefiltrowane.append(log)
+
+
+    print(f"Znaleziono {len(przefiltrowane)} wpisów o poziomie {poziom}.")
+
+
+    return przefiltrowane
 
 
 # ============================================================
@@ -156,7 +180,12 @@ def najnowsze_logi(logi: list[LogEntry], n: int) -> list[LogEntry]:
     """
     # TODO: Użyj heapq.nlargest() z kluczem sortowania po polu timestamp,
     #       aby pobrać n najnowszych wpisów. Wypisz je i zwróć listę.
-    pass
+
+    #
+    najnowsze = heapq.nlargest(n, logi)
+    print("Najnowsze logi:", najnowsze)
+    return najnowsze
+
 
 
 # =============================================================================

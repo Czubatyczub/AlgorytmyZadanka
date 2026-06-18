@@ -43,7 +43,13 @@ def wstaw(korzen: ProduktNode, nowy_wezel: ProduktNode) -> ProduktNode:
     # TODO: Porównaj ID nowego węzła z ID korzenia i rekurencyjnie wstaw go
     #       do odpowiedniego poddrzewa (lewego lub prawego).
     #       Obsłuż też przypadek duplikatu — węzeł z tym samym ID ignorujemy.
-    pass
+    if nowy_wezel.id < korzen.id:
+        korzen.lewo = wstaw(korzen.lewo, nowy_wezel)
+    elif nowy_wezel.id > korzen.id:
+        korzen.prawo = wstaw(korzen.prawo, nowy_wezel)
+    # jeśli ID jest równe, nic nie robimy (duplikat)
+
+
     return korzen
 
 
@@ -57,7 +63,16 @@ def szukaj(korzen: ProduktNode, szukane_id: int) -> str:
     """
     # TODO: Rekurencyjnie przeszukuj drzewo — porównuj szukane ID z bieżącym węzłem
     #       i decyduj, w którą stronę iść. Obsłuż przypadek nieznalezienia produktu.
-    pass
+    if korzen is None:
+        return None
+
+    if  szukane_id == korzen.id:
+        return korzen
+
+    if szukane_id < korzen.id:
+        return szukaj(korzen.lewo, szukane_id)
+
+    return szukaj(korzen.prawo, szukane_id)
 
 
 # ============================================================
@@ -70,7 +85,13 @@ def wyswietl_katalog(korzen: ProduktNode):
     if korzen:
         # TODO: Zastosuj obchód in-order (lewo → węzeł → prawo),
         #       żeby wypisać produkty posortowane rosnąco po ID.
-        pass
+        if korzen.lewo:
+            wyswietl_katalog(korzen.lewo)
+
+        print(korzen.id, korzen.nazwa)
+
+        if korzen.prawo:
+            wyswietl_katalog(korzen.prawo)
 
 
 # =============================================================================

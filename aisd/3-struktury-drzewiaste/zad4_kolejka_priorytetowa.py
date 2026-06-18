@@ -57,7 +57,9 @@ def dodaj_zgloszenie(kolejka: list, priorytet: int, id_zgloszenia: int, opis: st
     """
     # TODO: Dodaj zgłoszenie jako krotkę do kopca używając heapq.heappush().
     #       Wypisz potwierdzenie dodania.
-    pass
+
+        heapq.heappush(kolejka, (priorytet, id_zgloszenia, opis))
+        print(f"Dodano zgłoszenie: priorytet={priorytet}, id={id_zgloszenia}, opis='{opis}'")
 
 
 # ============================================================
@@ -77,7 +79,14 @@ def obsluz_zgloszenie(kolejka: list) -> Zgloszenie | None:
     # TODO: Obsłuż przypadek pustej kolejki – zwróć None z komunikatem.
     #       Pobierz najważniejsze zgłoszenie z kopca za pomocą heapq.heappop(),
     #       wypisz komunikat o obsłużeniu i zwróć krotkę.
-    pass
+    if not kolejka:  # kolejka jest pusta
+        print("Kolejka jest pusta — brak zgłoszeń do obsłużenia.")
+        return None
+
+    zgloszenie = heapq.heappop(kolejka)
+    priorytet, id_zgloszenia, opis = zgloszenie
+    print(f"Obsłużono zgłoszenie: priorytet={priorytet}, id={id_zgloszenia}, opis='{opis}'")
+    return zgloszenie
 
 
 # ============================================================
@@ -97,7 +106,17 @@ def wyswietl_kolejke(kolejka: list) -> None:
     #       Pamiętaj – lista kopca nie jest posortowana wizualnie, więc do
     #       wyświetlenia w kolejności priorytetu potrzebujesz posortowanej kopii
     #       (nie niszcz oryginalnego kopca!). Wypisz wszystkie zgłoszenia.
-    pass
+
+    if not kolejka:
+        print("Kolejka jest pusta.")
+        return
+
+    # Tworzymy kopię i sortujemy po priorytecie (min-heap → priorytet = minimum)
+    kopia = sorted(kolejka)
+
+    print("Kolejka zgłoszeń (od najwyższego priorytetu):")
+    for priorytet, id_zgloszenia, opis in kopia:
+        print(f"priorytet={priorytet}, id={id_zgloszenia}, opis='{opis}'")
 
 
 # =============================================================================

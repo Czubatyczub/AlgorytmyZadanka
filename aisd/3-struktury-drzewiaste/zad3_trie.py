@@ -84,7 +84,12 @@ class Trie:
         # TODO: Iteruj po literach słowa. Dla każdej litery sprawdź, czy istnieje
         #       odpowiedni węzeł — jeśli nie, utwórz go. Przejdź do węzła tej litery.
         #       Po przetworzeniu wszystkich liter oznacz bieżący węzeł jako koniec słowa.
-        pass
+        wartosc = self.root
+        for i in slowo:
+            if i not in wartosc.dzieci:
+                wartosc.dzieci[i] = TrieNode()
+            wartosc = wartosc.dzieci[i]
+        wartosc.koniecsłowa = True
 
     # ============================================================
     # FUNKCJA 2 – Wyszukiwanie słowa
@@ -103,7 +108,9 @@ class Trie:
         """
         # TODO: Przejdź po literach słowa — jeśli brakuje litery w węźle, zwróć False.
         #       Po dojściu do końca zwróć wartość flagi czy_koniec ostatniego węzła.
-        pass
+        for i in slowo:
+            if i not in self.root.dzieci:
+                return False
 
     # ============================================================
     # FUNKCJA 3 – Autouzupełnianie (podpowiedzi)
@@ -131,7 +138,12 @@ class Trie:
         #       Następnie wywołaj pomocniczą funkcję _zbierz_slowa(), która
         #       rekurencyjnie zbierze wszystkie słowa z poddrzewa.
         #       Zwróć posortowaną listę wyników.
-        pass
+        wartosc = self.root
+        for liter in prefiks:
+            if liter not in wartosc.dzieci:
+                return []
+            wartosc = wartosc.dzieci[liter]
+            self._zbierz_slowa(wartosc, prefiks, wyniki)
 
     def _zbierz_slowa(self, node: TrieNode, prefiks: str, wyniki: list[str]) -> None:
         """
