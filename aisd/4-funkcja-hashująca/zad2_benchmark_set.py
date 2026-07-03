@@ -58,7 +58,18 @@ def zmierz_czas_listy(lista: list[int], element: int) -> float | None:  # type: 
     #          (wynik operacji możesz zignorować – użyj zmiennej _).
     # TODO: 3. Zapisz czas końcowy za pomocą time.perf_counter().
     # TODO: 4. Oblicz i zwróć różnicę: czas_konca - czas_startu.
-    pass
+
+    czas_startu = time.perf_counter()
+
+
+    for _ in range(LICZBA_POWTORZEN):
+        _ = element in lista
+
+
+    czas_konca = time.perf_counter()
+
+
+    return czas_konca - czas_startu
 
 
 def zmierz_czas_zbioru(zbior: set[int], element: int) -> float | None:  # type: ignore[return]
@@ -77,7 +88,15 @@ def zmierz_czas_zbioru(zbior: set[int], element: int) -> float | None:  # type: 
     #          (wynik operacji możesz zignorować – użyj zmiennej _).
     # TODO: 3. Zapisz czas końcowy za pomocą time.perf_counter().
     # TODO: 4. Oblicz i zwróć różnicę: czas_konca - czas_startu.
-    pass
+
+    czas_startu = time.perf_counter()
+
+
+    for _ in range(LICZBA_POWTORZEN):
+        _ = element in zbior
+
+    czas_konca = time.perf_counter()
+    return czas_konca - czas_startu
 
 
 def wypisz_wyniki(czas_listy: float | None, czas_zbioru: float | None) -> None:

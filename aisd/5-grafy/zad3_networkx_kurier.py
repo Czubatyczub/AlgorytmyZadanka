@@ -115,14 +115,15 @@ def znajdz_optymalna_trase(
     #       Wynik zapisz w zmiennej 'trasa'.
     # zamień None na właściwe wywołanie nx.shortest_path(...)
     trasa: list[str] = []  # TODO
-    pass
+    trasa = nx.shortest_path(G, magazyn, punkt_odbioru, weight="czas")
+
 
     # TODO: Wywołaj funkcję nx.shortest_path_length() z tymi samymi
     #       parametrami (G, source=..., target=..., weight="czas").
     #       Wynik zapisz w zmiennej 'laczny_czas'.
     # zamień 0.0 na właściwe wywołanie nx.shortest_path_length(...)
     laczny_czas: float = 0.0  # TODO
-    pass
+    laczny_czas: float = nx.shortest_path_length(G, magazyn, punkt_odbioru, weight="czas")
 
     return trasa, laczny_czas
 

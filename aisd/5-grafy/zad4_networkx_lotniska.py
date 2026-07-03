@@ -93,14 +93,16 @@ def znajdz_glowny_hub(G: nx.Graph) -> tuple[str, int]:
     # TODO: Pobierz stopnie wszystkich wierzchołków korzystając z G.degree().
     #       Przekonwertuj wynik na słownik przy użyciu dict().
     #       Zapisz go w zmiennej 'stopnie'.
-    stopnie: dict[str, int] = {}  # TODO: zamień na dict(G.degree())
-    pass
+    stopnie: dict[str, int] = dict(G.degree())   # TODO: zamień na dict(G.degree())
+    hub = max(stopnie, key=stopnie.get)
+
 
     # TODO: Znajdź lotnisko z maksymalną wartością stopnia.
     #       Zapisz kod lotniska w zmiennej 'hub', a jego stopień w 'max_stopien'.
     hub: str = ""           # TODO
     max_stopien: int = 0    # TODO
-    pass
+    hub = max(stopnie, key=stopnie.get)
+    max_stopien = stopnie[hub]
 
     return hub, max_stopien
 

@@ -94,11 +94,14 @@ def bfs_znajomi_drugiego_stopnia(
         # TODO: Pobierz pierwszą parę (aktualna_osoba, aktualna_odleglosc)
         #       z POCZĄTKU kolejki (użyj .popleft() – to właśnie czyni BFS
         #       przeszukiwaniem WSZERZ, a nie WGŁĄB).
-        pass
+
+        aktualna_osoba, aktualna_odleglosc = kolejka.popleft()
+
 
         # TODO: Jeśli aktualna_odleglosc wynosi już 2, nie trzeba iść dalej
         #       w głąb – pomiń bieżącą iterację (użyj 'continue').
-        pass
+        if aktualna_osoba == 2:
+            continue
 
         # TODO: Przejdź przez każdego sąsiada bieżącej osoby
         #       (skorzystaj z graf[aktualna_osoba]).
@@ -111,7 +114,22 @@ def bfs_znajomi_drugiego_stopnia(
         #            - dodaj parę (sasiad, nowa_odleglosc) do kolejki
         #            - jeśli nowa odległość == 2, dodaj sąsiada
         #              do zbioru 'znajomi_drugiego_stopnia'
-        pass
+        for sasiad in graf[aktualna_osoba]:
+            # a) Sprawdź, czy sąsiad był już odwiedzony.
+            if sasiad not in odleglosci:
+                # b) Jeśli NIE był odwiedzony:
+                # - oblicz nową odległość = aktualna_odleglosc + 1
+                nowa_odleglosc = aktualna_odleglosc + 1
+
+                # - zapisz ją w słowniku 'odleglosci'
+                odleglosci[sasiad] = nowa_odleglosc
+
+                # - dodaj parę (sasiad, nowa_odleglosc) do kolejki
+                kolejka.append((sasiad, nowa_odleglosc))
+
+                # - jeśli nowa odległość == 2, dodaj sąsiada do zbioru 'znajomi_drugiego_stopnia'
+                if nowa_odleglosc == 2:
+                    znajomi_drugiego_stopnia.add(sasiad)
 
     return znajomi_drugiego_stopnia
 

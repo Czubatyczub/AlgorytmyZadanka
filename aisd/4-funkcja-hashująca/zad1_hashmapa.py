@@ -50,7 +50,9 @@ class ProstaMapa:
         # TODO: Oblicz sumę kodów ASCII znaków klucza za pomocą funkcji ord()
         #       i wbudowanej funkcji sum(), a następnie zastosuj operator %
         #       z self.rozmiar, aby otrzymać prawidłowy indeks kubełka.
-        pass
+
+        suma_ascii = sum(ord(znak) for znak in klucz)
+        return suma_ascii % self.rozmiar
 
     # -------------------------------------------------------------------------
 
@@ -74,7 +76,21 @@ class ProstaMapa:
         #          Jeśli tak: zaktualizuj wartość (zastąp krotkę nową) i zakończ.
         # TODO: 4. Jeśli klucz NIE istnieje w kubełku: dołącz nową krotkę
         #          (klucz, wartosc) na koniec kubełka.
-        pass
+
+        indeks = self._funkcja_hashujaca(klucz)
+
+
+        kubełek = self.kubełki[indeks]
+
+
+        for i in range(len(kubełek)):
+            # Każdy element w kubełku to krotka (klucz_w_kubełku, wartosc_w_kubełku)
+            if kubełek[i][0] == klucz:
+                # Jeśli klucz już istnieje, aktualizujemy jego wartość i kończymy działanie
+                kubełek[i] = (klucz, wartosc)
+                return
+
+        kubełek.append((klucz, wartosc))
 
     # -------------------------------------------------------------------------
 
@@ -95,7 +111,16 @@ class ProstaMapa:
         #          której pierwszy element jest równy kluczowi, zwróć drugi element.
         # TODO: 4. Jeśli pętla zakończy się bez znalezienia klucza,
         #          zwróć napis: f"Klucz '{klucz}' nie istnieje w mapie."
-        pass
+
+        indeks = self._funkcja_hashujaca(klucz)
+        kubełek = self.kubełki[indeks]
+
+        for para_klucz, wartosc in kubełek:
+            if para_klucz == klucz:
+                return wartosc
+
+
+        return f"Klucz '{klucz}' nie istnieje w mapie."
 
     # -------------------------------------------------------------------------
 

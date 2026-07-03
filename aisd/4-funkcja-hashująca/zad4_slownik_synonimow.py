@@ -52,7 +52,11 @@ def dodaj_synonim(slowo: str, synonim: str) -> None:
     # TODO: 2. Sprawdź, czy 'synonim' nie znajduje się już na liście
     #          (unikamy duplikatów).
     # TODO: 3. Jeśli synonim jest nowy – dołącz go do listy (.append()).
-    pass
+
+    lista_synonimow = baza_synonimow.setdefault(slowo, [])
+
+    if synonim not in lista_synonimow:
+        lista_synonimow.append(synonim)
 
 
 def znajdz_synonimy(slowo: str) -> list[str] | str | None:  # type: ignore[return]
@@ -77,7 +81,13 @@ def znajdz_synonimy(slowo: str) -> list[str] | str | None:  # type: ignore[retur
     # TODO: 1. Sprawdź, czy 'slowo' istnieje w baza_synonimow.
     # TODO: 2. Jeśli tak – zwróć przypisaną listę synonimów.
     # TODO: 3. Jeśli nie – zwróć napis: f"Słowo '{slowo}' nie istnieje w bazie."
-    pass
+
+    wynik = baza_synonimow.get(slowo)
+
+    if wynik is not None:
+        return wynik
+
+    return f"Słowo '{slowo}' nie istnieje w bazie."
 
 
 def usun_slowo(slowo: str) -> None:
@@ -99,7 +109,12 @@ def usun_slowo(slowo: str) -> None:
     # TODO: 1. Sprawdź, czy 'slowo' istnieje w baza_synonimow.
     # TODO: 2. Jeśli tak – usuń je za pomocą `del` i wypisz potwierdzenie.
     # TODO: 3. Jeśli nie – wypisz komunikat: f"Słowo '{slowo}' nie istnieje w bazie."
-    pass
+
+    if slowo in baza_synonimow:
+        del baza_synonimow[slowo]
+        print(f"Słowo '{slowo}' zostało usunięte z bazy.")
+    else:
+        print(f"Słowo '{slowo}' nie istnieje w bazie.")
 
 
 def wyswietl_statystyki() -> None:
@@ -121,7 +136,14 @@ def wyswietl_statystyki() -> None:
     # TODO: 1. Oblicz liczbę słów: len(baza_synonimow).
     # TODO: 2. Oblicz łączną liczbę synonimów przy użyciu sum() i .values().
     # TODO: 3. Wypisz obie wartości w czytelnym formacie.
-    pass
+
+    liczba_slow = len(baza_synonimow)
+
+    laczna_liczba_synonimow = sum(len(lista) for lista in baza_synonimow.values())
+
+    print("Statystyki bazy synonimów:")
+    print(f"  Liczba słów w bazie    :   {liczba_slow}")
+    print(f"  Łączna liczba synonimów:  {laczna_liczba_synonimow}")
 
 
 # =============================================================================

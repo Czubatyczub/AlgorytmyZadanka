@@ -62,7 +62,7 @@ def unikalne_ip(lista_logow: list[str]) -> set[str] | None:  # type: ignore[retu
         zbiór (set) zawierający każdy adres IP dokładnie raz
     """
     # TODO: Przekształć listę lista_logow na zbiór (set) i zwróć wynik.
-    pass
+    return set(lista_logow)
 
 
 def licznik_wystapien(lista_logow: list[str]) -> dict[str, int]:
@@ -82,7 +82,8 @@ def licznik_wystapien(lista_logow: list[str]) -> dict[str, int]:
     # TODO: Dla każdego ip zlicz ile razy pojawił się w logach
     #       Wskazówka: użyj licznik.get(ip, 0) aby bezpiecznie
     #       odczytać aktualną wartość lub 0, gdy klucz jeszcze nie istnieje.
-    pass
+    for ip in lista_logow:
+        licznik[ip] = licznik.get(ip, 0) + 1
 
     return licznik
 

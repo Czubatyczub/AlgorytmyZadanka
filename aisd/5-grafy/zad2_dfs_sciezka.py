@@ -99,7 +99,7 @@ def czy_istnieje_sciezka_dfs(
         # TODO: Zdejmij węzeł z WIERZCHOŁKA stosu (użyj .pop() – LIFO!).
         #       Porównaj: w BFS było tu kolejka.popleft() (FIFO).
         #       To jedyna strukturalna różnica między DFS a BFS!
-        pass
+        aktualny = stos.pop()
 
         # TODO: Przejrzyj wszystkich sąsiadów bieżącego węzła
         #       (skorzystaj z graf[biezacy_wezel]).
