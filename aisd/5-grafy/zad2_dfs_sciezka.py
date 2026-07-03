@@ -109,7 +109,17 @@ def czy_istnieje_sciezka_dfs(
         #         b) Jeśli sąsiad nie był jeszcze odwiedzony:
         #            - dodaj go do zbioru 'odwiedzone'
         #            - wrzuć go na stos (.append())
-        pass
+        for sasiad in graf[aktualny]:
+            # a) Jeśli sąsiad == cel, ścieżka została znaleziona – zwróć True od razu.
+            if sasiad == cel:
+                return True
+
+            # b) Jeśli sąsiad nie był jeszcze odwiedzony:
+            if sasiad not in odwiedzone:
+                # - dodaj go do zbioru 'odwiedzone'
+                odwiedzone.add(sasiad)
+                # - wrzuć go na stos (.append())
+                stos.append(sasiad)
 
     # Jeśli stos jest pusty, a cel nie został znaleziony – brak ścieżki.
     return False
